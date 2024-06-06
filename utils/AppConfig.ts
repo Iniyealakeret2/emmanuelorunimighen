@@ -1,6 +1,7 @@
 export const AppConfig = {
-  site_name: "Christian Mucyo Portfolio",
-  title: "Christian Mucyo Portfolio",
-  description: "This is a website which demonstrate the portfolio of me",
+  site_name: "Emmanuel Orunimighen Portfolio",
+  title: "Emmanuel Orunimighen Portfolio",
+  description:
+    "This is a website which shows the projects I have worked on, and my skill sets",
   locale: "en",
 };

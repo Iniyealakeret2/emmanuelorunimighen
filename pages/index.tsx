@@ -35,31 +35,32 @@ const Home: NextPage = () => {
     email: "",
     message: "",
   });
-  const frontend = [
-    { id: 1, name: "Tailwind" },
-    { id: 2, name: "TypeScript" },
-    { id: 3, name: "React(Next)" },
-    { id: 4, name: "React Native" },
-  ];
   const backend = [
-    { id: 1, name: "Node(Express, Nest)" },
-    { id: 2, name: "Django" },
-    { id: 3, name: "GraphQL" },
-    { id: 4, name: "Strapi" },
+    { id: 1, name: "NodeJs" },
+    { id: 2, name: "ExpressJs" },
+    { id: 3, name: "Typescript" },
+    { id: 4, name: "Javascript" },
   ];
 
   const database = [
-    { id: 1, name: "Mysql" },
-    { id: 2, name: "Postgres" },
-    { id: 3, name: "MongoDB / Firebase" },
-    { id: 4, name: "Redis" },
+    { id: 1, name: "MongoDB and Mongoose" },
+    { id: 2, name: "Sequelize ORM (SQLite, MySQL)" },
   ];
 
   const devops = [
     { id: 1, name: "Docker" },
-    { id: 2, name: "Gitlab / Travis CI" },
+    { id: 2, name: "Docker-compose" },
     { id: 3, name: "Kubernetes" },
-    { id: 4, name: "AWS" },
+    { id: 4, name: "Heroku" },
+  ];
+
+  const android = [
+    { id: 1, name: "Android SDK" },
+    { id: 2, name: "Kotlin" },
+    { id: 3, name: "Room" },
+    { id: 4, name: "Flow" },
+    { id: 5, name: "Dagger Hilt" },
+    { id: 6, name: "Coroutines" },
   ];
 
   const themeCheck = () => {
@@ -152,7 +153,7 @@ const Home: NextPage = () => {
   };
 
   const downloadCV = () => {
-    window.open("/Christian-Mucyo-CV.pdf", "_blank");
+    window.open("/my_resume.pdf", "_blank");
   };
 
   const handleOnChange = (event: any) => {
@@ -164,8 +165,8 @@ const Home: NextPage = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const msg = {
-      to: "mucyochristian2@gmail.com",
-      from: "muchris.dev@gmail.com",
+      to: "iniyealakeret1@gmail.com",
+      from: `${values.email}`,
       subject: `Email from ${values.email}`,
       text: ``,
       html: render(
@@ -173,7 +174,7 @@ const Home: NextPage = () => {
       ),
     };
     const res = await fetch("/api/sendgrid", {
-      body: JSON.stringify(values),
+      body: JSON.stringify(msg),
       headers: {
         "Content-Type": "application/json",
       },
@@ -194,7 +195,8 @@ const Home: NextPage = () => {
     <>
       <Navbar classes="sticky top-0 h-[4.5rem] z-20 bg-secondary-9 dark:bg-secondary-7">
         <div className="container flex justify-between items-center h-full max-w-[1536px] px-6">
-          <h1 className="text-secondary-7/90 dark:text-primary-2/90">CHRIS</h1>
+          <h1 className="text-secondary-7/90 dark:text-primary-2/90">EO</h1>
+          {/* NAVIGATION START */}
           <nav
             className={`lg:w-[1280px] lg:px-6 lg:flex lg:justify-end ${
               toggleMenu ? "toggle" : ""
@@ -220,14 +222,7 @@ const Home: NextPage = () => {
                   Portfolio
                 </a>
               </li>
-              <li className="blog">
-                <a
-                  onClick={() => handleScrollToSection("blog")}
-                  className="text-secondary-7/90 dark:text-primary-2/90 hover:text-secondary-1 hover:dark:text-secondary-1 transition duration-[150] ease-in-out cursor-pointer"
-                >
-                  Blog
-                </a>
-              </li>
+
               <li className="contact">
                 <a
                   onClick={() => handleScrollToSection("contact")}
@@ -238,6 +233,8 @@ const Home: NextPage = () => {
               </li>
             </ul>
           </nav>
+          {/* NAVIGATION END */}
+
           <div className="flex flex-col justify-center">
             <button className="" onClick={themeSwitch}>
               {themeIcon(themeType)}
@@ -260,9 +257,11 @@ const Home: NextPage = () => {
           </svg>
         </div>
       </Navbar>
-      <Meta title={"mucyo chris"} />
+      <Meta title={"Emmanuel Orunimighen"} />
       <main ref={sectionContainer}>
         <section className="home bg-secondary-8 dark:bg-secondary-7" id="about">
+          {/* ABOUT ME START */}
+
           <div className="container max-w-[1280px] px-6 h-full flex items-center gap-2">
             <div className="basis-10/12 lg:basis-8/12">
               <div className="flex flex-col space-y-8">
@@ -273,22 +272,24 @@ const Home: NextPage = () => {
                   </span>
                 </h6>
                 <h1 className="name text-secondary-7 dark:text-primary-2 text-6xl font-semibold">
-                  Mucyo Christian
+                  Emmanuel Orunimighen
                 </h1>
                 <p className="text-secondary-7/80 dark:text-primary-2/80">
-                  A seasoned{" "}
+                  I am a seasoned{" "}
                   <span className="text-secondary-1">software engineer</span>{" "}
-                  with over 4 years of experience, specialized in delivering and
-                  maintaining websites and full stack solutions of all levels of
-                  complexity, that drives the overall success of the product.
+                  with 4 years of experience in designing and building robust,
+                  scalable, and efficient server-side applications. During my
+                  career as a software developer, I have been fascinated by the
+                  process of building fast and durable backend systems that
+                  power modern web applications.
                 </p>
                 <Button
                   onClick={downloadCV}
                   type="button"
-                  classes="w-[220px] px-6 py-4 !rounded-3xl bg-secondary-7 dark:bg-secondary-1/80 gap-4 text-primary-2 hover:text-secondary-1 dark:hover:text-secondary-7"
+                  classes="w-[240px] px-4 py-4 !rounded-3xl bg-secondary-7 dark:bg-secondary-1/80 gap-4 text-primary-2 hover:text-secondary-1 dark:hover:text-secondary-7"
                 >
                   <>
-                    <span>DOWNLOAD CV</span>
+                    <span>DOWNLOAD RESUME</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="24"
@@ -334,44 +335,23 @@ const Home: NextPage = () => {
                       </svg>
                     </a>
                   </Link>
-                  <Link href="https://medium.com/@mucyochristian2">
-                    <a target="_blank">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ionicon w-[28px] h-[28px] fill-secondary-7 dark:fill-primary-2"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M28 28v456h456V28H28zm378.83 108.04l-24.46 23.45a7.162 7.162 0 00-2.72 6.86v172.28c-.44 2.61.61 5.26 2.72 6.86l23.88 23.45v5.15H286.13v-5.15l24.74-24.02c2.43-2.43 2.43-3.15 2.43-6.86V198.81l-68.79 174.71h-9.3l-80.09-174.71v117.1c-.67 4.92.97 9.88 4.43 13.44l32.18 39.03v5.15h-91.24v-5.15l32.18-39.03c3.44-3.57 4.98-8.56 4.15-13.44V180.5c.38-3.76-1.05-7.48-3.86-10.01l-28.6-34.46v-5.15h88.81l68.65 150.55 60.35-150.55h84.66v5.16z" />
-                      </svg>
-                    </a>
-                  </Link>
-                  <Link href="https://stackoverflow.com/users/11505770/mucyo-christian">
-                    <a target="_blank">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ionicon w-[28px] h-[28px] fill-secondary-7 dark:fill-primary-2"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M392 440V320h40v160H64V320h40v120z" />
-                        <path d="M149.1 308.77l198.57 40.87 8.4-39.32-198.57-40.87zm26.27-93.12L359.22 300 376 263.76l-183.82-84.84zm50.95-89l156 127.78 25.74-30.52-156-127.78zM328 32l-33.39 23.8 120.82 160.37L448 192zM144 400h204v-40H144z" />
-                      </svg>
-                    </a>
-                  </Link>
                 </div>
               </div>
             </div>
           </div>
+          {/* ABOUT ME END */}
         </section>
         <section className="skills pt-0 pb-16 bg-secondary-8 dark:bg-secondary-7">
+          {/* SKILLS START */}
           <div className="container max-w-[1280px] px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex flex-col gap-6">
               <div className="">
                 <h6 className="font-bold text-secondary-7/90 dark:text-primary-2/90">
-                  Frontend
+                  Android
                 </h6>
               </div>
               <ul className="space-y-4 text-left">
-                {frontend.map((el) => (
+                {android.map((el) => (
                   <li className="flex items-center space-x-3" key={el.id}>
                     <svg
                       className="flex-shrink-0 w-5 h-5 text-secondary-1"
@@ -420,34 +400,7 @@ const Home: NextPage = () => {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-6">
-              <div className="">
-                <h6 className="font-bold text-secondary-7/90 dark:text-primary-2/90">
-                  Database
-                </h6>
-              </div>
-              <ul className="space-y-4 text-left">
-                {database.map((el) => (
-                  <li className="flex items-center space-x-3" key={el.id}>
-                    <svg
-                      className="flex-shrink-0 w-5 h-5 text-secondary-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                    <span className="text-secondary-7/80 dark:text-primary-2/80">
-                      {el.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+
             <div className="flex flex-col gap-6">
               <div className="">
                 <h6 className="font-bold text-secondary-7/90 dark:text-primary-2/90">
@@ -476,8 +429,39 @@ const Home: NextPage = () => {
                 ))}
               </ul>
             </div>
+            <div className="flex flex-col gap-6">
+              <div className="">
+                <h6 className="font-bold text-secondary-7/90 dark:text-primary-2/90">
+                  Database
+                </h6>
+              </div>
+              <ul className="space-y-4 text-left">
+                {database.map((el) => (
+                  <li className="flex items-center space-x-3" key={el.id}>
+                    <svg
+                      className="flex-shrink-0 w-5 h-5 text-secondary-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <span className="text-secondary-7/80 dark:text-primary-2/80">
+                      {el.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* SKILLS END */}
           </div>
         </section>
+        {/* MY PORTFOLIO START */}
         <section
           className="portfolio py-16 bg-primary-2 dark:bg-primary-3"
           id="portfolio"
@@ -489,8 +473,9 @@ const Home: NextPage = () => {
                   My <span className="text-secondary-1">Work</span>
                 </h3>
                 <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                  Take a look at some of the job, freelance, and side projects,
-                  I have worked on, which demonstrate my technical expertise.{" "}
+                  Take a look at some of the projects I have contributed to, and
+                  side projects I have worked on, which demonstrate my technical
+                  expertise.{" "}
                 </p>
               </div>
             </div>
@@ -498,10 +483,10 @@ const Home: NextPage = () => {
               <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
                 <div className="relative flex flex-col gap-4 rounded transition">
                   <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
-                    <Link href="https://custom-pos-system.vercel.app">
+                    <Link href="https://evarfinance.com">
                       <a target="_blank" className="cursor-pointer">
                         <Image
-                          src={"/projects/custom_pos.png"}
+                          src={"/projects/evarfinance.png"}
                           className="rounded overflow-hidden h-full"
                           layout="fill"
                         />
@@ -509,27 +494,29 @@ const Home: NextPage = () => {
                     </Link>
                   </div>
                   <div className="flex flex-col space-y-4">
-                    <Link href="https://custom-pos-system.vercel.app">
+                    <Link href="https://evarfinance.com">
                       <a
                         target="_blank"
                         className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
                       >
-                        Customized POS System
+                        Evarfinance
                       </a>
                     </Link>
                     <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                      A cross-platform management software developed to assist
-                      managers in tracking their stock and sales.
+                      This is a cross-border payment platform that handles
+                      seamless payments across the globe using cryptocurrencies.
+                      We focused on stablecoins to ensure stability and value
+                      retention.
                     </p>
                     <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Electron
+                          NodeJs
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          React
+                          ExpressJs
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
@@ -539,17 +526,22 @@ const Home: NextPage = () => {
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Tailwind
+                          MongoDB and Mongoose
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Express.js
+                          Elastic Email
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Nedb
+                          ImageKit
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Socket IO
                         </h6>
                       </div>
                     </div>
@@ -559,10 +551,10 @@ const Home: NextPage = () => {
               <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
                 <div className="relative flex flex-col gap-4 rounded transition">
                   <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
-                    <Link href="https://applix.africa">
+                    <Link href="https://fanful.app">
                       <a target="_blank" className="cursor-pointer">
                         <Image
-                          src={"/projects/applix.png"}
+                          src={"/projects/Fanful.png"}
                           className="rounded overflow-hidden h-full"
                           layout="fill"
                         />
@@ -570,161 +562,29 @@ const Home: NextPage = () => {
                     </Link>
                   </div>
                   <div className="flex flex-col space-y-4">
-                    <Link href="https://applix.africa">
+                    <Link href="https://fanful.app">
                       <a
                         target="_blank"
                         className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
                       >
-                        Applix Website
+                        Fanful Inc. (Duke MyTeam app)
                       </a>
                     </Link>
                     <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                      Software Company Website.
+                      A fan-based app that allows sports fans to interact with
+                      each other by posting, liking, commenting, and getting the
+                      latest news and updates from the various social handles of
+                      their favorite sports teams all in one place.
                     </p>
                     <div className="flex flex-wrap gap-[8px] overflow-x-hidden bottom-0">
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Php
+                          NodeJs
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Composer
-                        </h6>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Bootstrap
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
-                <div className="relative flex flex-col gap-4 rounded transition">
-                  <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
-                    <Link href="https://www.churchoffaithinrwanda.org/">
-                      <a target="_blank" className="cursor-pointer">
-                        <Image
-                          src={"/projects/churchoffaith.png"}
-                          className="rounded overflow-hidden h-full"
-                          layout="fill"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-
-                  <div className="flex flex-col space-y-4">
-                    <Link href="https://www.churchoffaithinrwanda.org/">
-                      <a
-                        target="_blank"
-                        className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
-                      >
-                        Church Of Faith In Rwanda
-                      </a>
-                    </Link>
-                    <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                      A website for a church based in Rwanda, for publishing
-                      their current news, and any church activity.
-                    </p>
-                    <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Laravel
-                        </h6>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          JQuery
-                        </h6>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Bootstrap
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
-                <div className="relative flex flex-col gap-4 rounded transition">
-                  <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
-                    <Link href="https://guavahire.com/">
-                      <a target="_blank" className="cursor-pointer">
-                        <Image
-                          src={"/projects/guavahire.png"}
-                          className="rounded overflow-hidden h-full"
-                          layout="fill"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-
-                  <div className="flex flex-col space-y-4">
-                    <Link href="https://guavahire.com/">
-                      <a
-                        target="_blank"
-                        className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
-                      >
-                        Guavahire
-                      </a>
-                    </Link>
-                    <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                      A web-based platform created to connect clients with
-                      highly skilled freelancers for job opportunities.
-                    </p>
-                    <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Laravel
-                        </h6>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          JQuery
-                        </h6>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Bootstrap
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
-                <div className="relative flex flex-col gap-4 rounded transition">
-                  <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
-                    <Link href="https://github.com/muchristian/WealthTrack-Frontend">
-                      <a target="_blank" className="cursor-pointer">
-                        <Image
-                          src={"/projects/wtrack.png"}
-                          className="rounded overflow-hidden h-full"
-                          layout="fill"
-                        />
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col space-y-4">
-                    <Link href="https://github.com/muchristian/WealthTrack-Frontend">
-                      <a
-                        target="_blank"
-                        className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
-                      >
-                        WealthTrack
-                      </a>
-                    </Link>
-                    <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                      A web-based application designed to manage personal
-                      expenses and provide insightful analytics.
-                    </p>
-                    <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
-                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
-                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          NextJS
+                          ExpressJs
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
@@ -734,22 +594,159 @@ const Home: NextPage = () => {
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Tailwind
+                          MongoDB and Mongoose
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          chart.js
+                          Loyalize API
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Strapi
+                          Twitter and Instagram API
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
+                <div className="relative flex flex-col gap-4 rounded transition">
+                  <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
+                    <Link href="https://www.sixteen.app/">
+                      <a target="_blank" className="cursor-pointer">
+                        <Image
+                          src={"/projects/sixteen.png"}
+                          className="rounded overflow-hidden h-full"
+                          layout="fill"
+                        />
+                      </a>
+                    </Link>
+                  </div>
+
+                  <div className="flex flex-col space-y-4">
+                    <Link href="https://www.sixteen.app/">
+                      <a
+                        target="_blank"
+                        className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
+                      >
+                        Sixteen App
+                      </a>
+                    </Link>
+                    <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
+                      Is a productivity app that helps users keep track of the
+                      time spent on social media apps in a gamified way, by
+                      creating challenges and inviting friends to take part with
+                      you.
+                    </p>
+                    <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          NodeJs
                         </h6>
                       </div>
                       <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
                         <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
-                          Postgres
+                          ExpressJs
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Typescript
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          MongoDB and Mongoose
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Augmond Gold API
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Stripe API
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6 bg-secondary-1/10 dark:bg-secondary-7 rounded">
+                <div className="relative flex flex-col gap-4 rounded transition">
+                  <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer">
+                    <Link href="https://www.sixteen.app/">
+                      <a target="_blank" className="cursor-pointer">
+                        <Image
+                          src={"/projects/yemosei.png"}
+                          className="rounded overflow-hidden h-full"
+                          layout="fill"
+                        />
+                      </a>
+                    </Link>
+                  </div>
+
+                  <div className="flex flex-col space-y-4">
+                    <Link href="https://www.sixteen.app/">
+                      <a
+                        target="_blank"
+                        className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
+                      >
+                        Yemosei App (Personal project)
+                      </a>
+                    </Link>
+                    <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
+                      Yemosei app allows us to Start a community project and get
+                      our community to financially support from anywhere in the
+                      world. It can also be used to build personal projects.
+                    </p>
+                    <div className="flex flex-wrap gap-[8px] overflow-x-hidden">
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          NodeJs
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          ExpressJs
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Typescript
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          MongoDB and Mongoose
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Android SDK
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Kotlin
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Dagger Hilt
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Room database
+                        </h6>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-lg flex justify-center bg-secondary-1/60 dark:bg-secondary-3">
+                        <h6 className="text-secondary-3 dark:text-secondary-1 text-xs font-medium">
+                          Pagination 3
                         </h6>
                       </div>
                     </div>
@@ -759,68 +756,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
-        <section
-          className="blog py-16 bg-secondary-8 dark:bg-secondary-7"
-          id="blog"
-        >
-          <div className="container max-w-[1280px] px-6 flex flex-col">
-            <div className="sm:w-8/12 md:w-7/12 lg:w-6/12 self-center">
-              <div className="flex flex-col gap-8 text-center">
-                <h3 className="text-secondary-7 dark:text-primary-2 text-5xl font-bold">
-                  My <span className="text-secondary-1">Article</span>
-                </h3>
-                <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                  View some of my published articles.{" "}
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12 gap-x-8 gap-y-10">
-              <div className="relative flex flex-col gap-4 rounded-lg transition">
-                <div className="relative h-[280px] md:h-[240px] lg:h-[200px] cursor-pointer border border-primary-5/10 rounded-lg">
-                  <Link href="https://medium.com/@mucyochristian2/a-step-by-step-tutorial-on-creating-a-nestjs-rabbitmq-microservice-2621748255d1">
-                    <a target="_blank" className="cursor-pointer">
-                      <Image
-                        src={
-                          "/articles/step_by_step_to_create_microservices_in_nestjs.png"
-                        }
-                        className="rounded-lg overflow-hidden h-full"
-                        layout="fill"
-                      />
-                    </a>
-                  </Link>
-                </div>
-                <div className="flex flex-col space-y-4">
-                  <Link href="https://medium.com/@mucyochristian2/a-step-by-step-tutorial-on-creating-a-nestjs-rabbitmq-microservice-2621748255d1">
-                    <a
-                      target="_blank"
-                      className="text-secondary-7/90 dark:text-primary-2/90 text-base font-bold cursor-pointer"
-                    >
-                      A Step-by-Step Tutorial on Creating a NestJS RabbitMQ
-                      Microservice
-                    </a>
-                  </Link>
-                  <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                    I explain comprehensively RabbitMQ, covering its operation
-                    and configuration. Additionally, I explored the concept of
-                    monorepo, including its setup and advantages, particularly
-                    in microservices development.
-                  </p>
-                  <div className="flex space-x-2">
-                    <h6 className="text-secondary-1 text-sm font-medium">
-                      #microservice
-                    </h6>
-                    <h6 className="text-secondary-1 text-sm font-medium">
-                      #nestjs
-                    </h6>
-                    <h6 className="text-secondary-1 text-sm font-medium">
-                      #devops
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* MY PORTFOLIO END */}
+        {/* CONTACT START */}
         <section
           className="contacts bg-primary-2 dark:bg-primary-3 py-16"
           id="contact"
@@ -832,8 +769,8 @@ const Home: NextPage = () => {
                   Get in <span className="text-secondary-1">Touch</span>
                 </h3>
                 <p className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-                  Please don't hesitate to contact me by filling out the form
-                  below, and I'll get back to you as soon as possible.{" "}
+                  Please contact me by filling the form below below, and I'll
+                  get back to you as soon as possible.{" "}
                 </p>
               </div>
             </div>
@@ -848,7 +785,7 @@ const Home: NextPage = () => {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-secondary-7/80 dark:text-primary-2/80"
                   >
-                    Name
+                    full name
                   </label>
                   <input
                     type="text"
@@ -885,7 +822,7 @@ const Home: NextPage = () => {
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-secondary-7/80 dark:text-primary-2/80"
                   >
-                    Email
+                    Email address
                   </label>
                   <input
                     type="email"
@@ -923,7 +860,7 @@ const Home: NextPage = () => {
                 type="submit"
                 classes="mt-6 w-[180px] self-center px-6 py-4 !rounded-3xl bg-secondary-7 dark:bg-secondary-1/80 gap-4 text-primary-2 hover:text-secondary-1 dark:hover:text-secondary-7"
               >
-                <span>Submit</span>
+                <span>Send message</span>
               </Button>
             </form>
           </div>
@@ -934,10 +871,11 @@ const Home: NextPage = () => {
         >
           <div className="container max-w-[1280px] flex flex-col items-center">
             <h6 className="text-sm text-secondary-7/80 dark:text-primary-2/80">
-              Built By Chris &copy; 2023
+              Built By EO &copy; 2024
             </h6>
           </div>
         </section>
+        {/* CONTACT END */}
       </main>
     </>
   );

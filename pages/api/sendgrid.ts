@@ -14,7 +14,7 @@ async function sendEmail(req: any, res: any) {
         <head>
           <meta charset="utf-8">
         
-          <title>Mucyo Chris Email</title>
+          <title>Emmanuel Orunimighen Email</title>
           <meta name="description" content="Mucyo Chris Email">
           <meta name="author" content="SitePoint">
         <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
